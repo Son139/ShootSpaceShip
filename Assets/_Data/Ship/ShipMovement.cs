@@ -17,7 +17,7 @@ public class ShipMovement : MonoBehaviour
 
     protected virtual void GetTargetPos()
     {
-        targetPos = InputManager.Instance.TargetPos;
+        targetPos = InputManager.Instance.MouseWorldPos;
         targetPos.z = 0;
     }
 

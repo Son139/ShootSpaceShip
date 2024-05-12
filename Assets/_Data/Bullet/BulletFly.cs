@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class BulletFly : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] protected float speed = 1f;
+    [SerializeField] protected Vector3 dir = Vector3.right;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        transform.parent.Translate(speed * Time.deltaTime * dir);
     }
 }
