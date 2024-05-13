@@ -32,7 +32,6 @@ public class ShipShooting : MonoBehaviour
         Transform newBullet = BulletSpawner.Instance.Spawn( BulletSpawner.bulletOne, posSpawn, rotation);
         if (newBullet == null) return;
 
-        newBullet.gameObject.name = BulletSpawner.bulletOne;
         newBullet.gameObject.SetActive(true);
     }
 

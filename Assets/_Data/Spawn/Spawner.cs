@@ -5,11 +5,21 @@ using UnityEngine;
 
 public abstract class Spawner : BaseMonoBehaviour
 {
+    [SerializeField] protected Transform holder;
     [SerializeField] protected List<Transform> prefabs;
+    [SerializeField] protected List<Transform> poolObjs;
 
     protected override void LoadComponents()
     {
+        LoadHolder();
         LoadPrefabs();
+    }
+
+    protected virtual void LoadHolder()
+    {
+        if (holder != null) return;
+        holder = transform.Find("Holder");
+        Debug.Log(transform.name + " : Load Holder");
     }
 
     protected virtual void LoadPrefabs()
@@ -23,7 +33,7 @@ public abstract class Spawner : BaseMonoBehaviour
         }
         HidePrefabs();
 
-        Debug.Log(transform.name + " :LoadPrefabs");
+        Debug.Log(transform.name + " : Load Prefabs");
     }
 
     protected virtual void HidePrefabs()
@@ -39,8 +49,33 @@ public abstract class Spawner : BaseMonoBehaviour
         Transform prefab = GetPrefabByName(prefabName);
         if (prefab == null) Debug.LogError("Prefab not found!!");
 
-        Transform newPrefab = Instantiate(prefab, posSpawn, rotation);
+        Transform newPrefab = GetPrefabFromPool(prefab);
+        newPrefab.SetLocalPositionAndRotation(posSpawn, rotation);
+
+        newPrefab.parent = holder;
         return newPrefab;
+    }
+
+    protected virtual Transform GetPrefabFromPool( Transform prefab )
+    {
+        foreach( Transform poolObj in poolObjs)
+        {
+            if(prefab.name == poolObj.name)
+            {
+                poolObjs.Remove(poolObj);
+                return poolObj;
+            }
+        }
+
+        Transform newPrefab = Instantiate(prefab);
+        newPrefab.name = prefab.name;
+        return newPrefab;
+    }
+
+    public virtual void Despawn(Transform obj)
+    {
+        poolObjs.Add(obj);
+        obj.gameObject.SetActive(false);
     }
 
     public virtual Transform GetPrefabByName(string prefabName)
