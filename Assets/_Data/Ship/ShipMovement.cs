@@ -12,7 +12,6 @@ public class ShipMovement : MonoBehaviour
         GetTargetPos();
         LookAtTarget();
         Moving();
-
     }
 
     protected virtual void GetTargetPos()

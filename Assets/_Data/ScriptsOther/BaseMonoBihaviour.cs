@@ -9,13 +9,24 @@ public class BaseMonoBehaviour : MonoBehaviour
         LoadComponents();
     }
 
+    protected virtual void Start()
+    {
+
+    }
+
     protected virtual void Reset()
     {
         LoadComponents();
+        ResetValue();
     }
 
 
     protected virtual void LoadComponents()
+    {
+
+    }
+
+    protected virtual void ResetValue()
     {
 
     }
