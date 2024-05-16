@@ -15,7 +15,7 @@ public abstract class Despawn : BaseMonoBehaviour
         DespawnObject();
     }
 
-    protected virtual void DespawnObject()
+    public virtual void DespawnObject()
     {
         Destroy(transform.parent.gameObject);
     }
