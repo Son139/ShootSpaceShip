@@ -8,4 +8,10 @@ public class BulletDespawn : DespawnByDistance
     {
         BulletSpawner.Instance.Despawn(transform.parent);
     }
+
+    protected override void ResetValue()
+    {
+        base.ResetValue();
+        distanceLimit = 70;
+    }
 }

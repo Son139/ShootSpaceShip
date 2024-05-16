@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPoints : BaseMonoBehaviour
+public abstract class SpawnPoints : BaseMonoBehaviour
 {
     [SerializeField] protected List<Transform> points;
 
@@ -17,7 +17,8 @@ public class SpawnPoints : BaseMonoBehaviour
         if (points.Count > 0) return;
         foreach (Transform point in transform)
         {
-            points.Add(point); 
+            points.Add(point);
+            Debug.Log(point.name);
         }
         Debug.Log(transform.name + " :Load Point");
     }

@@ -9,6 +9,11 @@ public class BaseMonoBehaviour : MonoBehaviour
         LoadComponents();
     }
 
+    protected virtual void OnEnable()
+    {
+        
+    }
+
     protected virtual void Start()
     {
 
