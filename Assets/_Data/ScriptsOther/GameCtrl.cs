@@ -27,6 +27,6 @@ public class GameCtrl : BaseMonoBehaviour
     {
         if (mainCamera != null) return;
         mainCamera = Transform.FindObjectOfType<Camera>().transform;
-        Debug.Log(transform.name + " : Load Camera");
+        Debug.Log(transform.name + " : Load Camera", gameObject);
     }
 }

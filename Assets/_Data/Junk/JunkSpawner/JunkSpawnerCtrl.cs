@@ -21,13 +21,13 @@ public class JunkSpawnerCtrl : BaseMonoBehaviour
     {
         if (junkSpawner != null) return;
         junkSpawner = GetComponent<JunkSpawner>();
-        Debug.Log(transform.name + " : Load JunkSpawn");
+        Debug.Log(transform.name + " : Load JunkSpawn", gameObject);
     }
 
     protected virtual void LoadSpawnPoints()
     {
         if(junkSpawnPoints != null) return;
         junkSpawnPoints = FindAnyObjectByType<JunkSpawnPoints>();
-        Debug.Log(transform.name + " : Load Junk Spawn Points");
+        Debug.Log(transform.name + " : Load Junk Spawn Points", gameObject);
     }
 }

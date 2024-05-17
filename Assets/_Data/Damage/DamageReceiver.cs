@@ -22,7 +22,7 @@ public class DamageReceiver : BaseMonoBehaviour
         sphereCollider = GetComponent<SphereCollider>();
         sphereCollider.isTrigger = true;
         sphereCollider.radius = 0.2f;
-        Debug.Log(transform.name + " : Load Collider");
+        Debug.Log(transform.name + " : Load Collider", gameObject);
     }
     protected override void OnEnable()
     {

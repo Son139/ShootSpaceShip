@@ -858,7 +858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1492845960}
-  speed: 1
+  speed: 0.5
 --- !u!1 &905721071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,7 +1579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 302549829}
-  junkDespawn: {fileID: 0}
+  junkDespawn: {fileID: 114886858}
 --- !u!1 &2029414309
 GameObject:
   m_ObjectHideFlags: 0

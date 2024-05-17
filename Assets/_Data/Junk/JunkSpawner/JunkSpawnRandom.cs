@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkRandom : BaseMonoBehaviour
+public class JunkSpawnRandom : BaseMonoBehaviour
 {
     [SerializeField] protected JunkSpawnerCtrl junkSpawnCtrl;
     public JunkSpawnerCtrl JunkSpawnCtrl { get => junkSpawnCtrl; }
@@ -17,7 +17,7 @@ public class JunkRandom : BaseMonoBehaviour
     {
         if (junkSpawnCtrl != null) return;
         junkSpawnCtrl = GetComponent<JunkSpawnerCtrl>();
-        Debug.Log(transform.name + " :Load JunkCtrl");
+        Debug.Log(transform.name + " :Load JunkCtrl", gameObject);
     }
 
     protected override void Start()
@@ -33,6 +33,6 @@ public class JunkRandom : BaseMonoBehaviour
         Transform obj = JunkSpawnCtrl.JunkSpawner.Spawn(JunkSpawner.meteoriteOne, pos, rot);
         obj.gameObject.SetActive(true);
 
-        Invoke(nameof(JunkSpawning), 1f);
+        Invoke(nameof(JunkSpawning), 1.5f);
     }
 }

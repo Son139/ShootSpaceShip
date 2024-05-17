@@ -21,13 +21,13 @@ public class BulletCtrl : BaseMonoBehaviour
     {
         if (damageSender != null) return;
         damageSender = transform.GetComponentInChildren<DamageSender>();
-        Debug.Log(transform.name + " : Load DamageSender");
+        Debug.Log(transform.name + " : Load DamageSender", gameObject);
     }
 
     protected virtual void LoadBulletDespawn()
     {
         if (bulletDespawn != null) return;
         bulletDespawn = transform.GetComponentInChildren<BulletDespawn>();
-        Debug.Log(transform.name + " : Load BulletDespawn");
+        Debug.Log(transform.name + " : Load BulletDespawn", gameObject);
     }
 }

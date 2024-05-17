@@ -20,7 +20,7 @@ public abstract class SpawnPoints : BaseMonoBehaviour
             points.Add(point);
             Debug.Log(point.name);
         }
-        Debug.Log(transform.name + " :Load Point");
+        Debug.Log(transform.name + " :Load Point", gameObject);
     }
 
     public virtual Transform GetRandomPoint()

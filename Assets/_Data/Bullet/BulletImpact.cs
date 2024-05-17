@@ -24,7 +24,7 @@ public class BulletImpact : BulletAbstract
         sphereCollider = GetComponent<SphereCollider>();
         sphereCollider.isTrigger = true;
         sphereCollider.radius = 0.05f;
-        Debug.Log(transform.name + " : Load Collider");
+        Debug.Log(transform.name + " : Load Collider", gameObject);
     }
 
     protected virtual void LoadRigibody()
@@ -32,7 +32,7 @@ public class BulletImpact : BulletAbstract
         if(rb != null) return;
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
-        Debug.Log(transform.name + " : Load Rigibody");
+        Debug.Log(transform.name + " : Load Rigibody", gameObject);
     }
 
     protected virtual void OnTriggerEnter(Collider other)

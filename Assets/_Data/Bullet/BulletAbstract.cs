@@ -18,6 +18,6 @@ public abstract class BulletAbstract : BaseMonoBehaviour
     {
         if (bulletCtrl != null) return;
         bulletCtrl = transform.parent.GetComponent<BulletCtrl>();
-        Debug.Log(transform.name + " : Load BulletCtrl");
+        Debug.Log(transform.name + " : Load BulletCtrl", gameObject);
     }
 }

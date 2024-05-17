@@ -21,13 +21,13 @@ public class JunkCtrl : BaseMonoBehaviour
     {
         if (model != null) return;
         model = transform.Find("Model");
-        Debug.Log(transform.name + " : Load Model");
+        Debug.Log(transform.name + " : Load Model", gameObject);
     }
 
     protected virtual void LoadJunkDespawn()
     {
         if(junkDespawn != null) return;
         junkDespawn = transform.GetComponentInChildren<JunkDespawn>();
-        Debug.Log(transform.name + ": Load JunkDespawn");
+        Debug.Log(transform.name + ": Load JunkDespawn", gameObject);
     }
 }

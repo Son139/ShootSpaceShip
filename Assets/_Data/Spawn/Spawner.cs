@@ -19,7 +19,7 @@ public abstract class Spawner : BaseMonoBehaviour
     {
         if (holder != null) return;
         holder = transform.Find("Holder");
-        Debug.Log(transform.name + " : Load Holder");
+        Debug.Log(transform.name + " : Load Holder", gameObject);
     }
 
     protected virtual void LoadPrefabs()
@@ -33,7 +33,7 @@ public abstract class Spawner : BaseMonoBehaviour
         }
         HidePrefabs();
 
-        Debug.Log(transform.name + " : Load Prefabs");
+        Debug.Log(transform.name + " : Load Prefabs", gameObject);
     }
 
     protected virtual void HidePrefabs()
