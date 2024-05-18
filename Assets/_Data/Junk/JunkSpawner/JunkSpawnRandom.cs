@@ -7,6 +7,10 @@ public class JunkSpawnRandom : BaseMonoBehaviour
     [SerializeField] protected JunkSpawnerCtrl junkSpawnCtrl;
     public JunkSpawnerCtrl JunkSpawnCtrl { get => junkSpawnCtrl; }
 
+    [SerializeField] protected float randomDelay = 2f;
+    [SerializeField] protected float randomTimer = 0;
+    [SerializeField] protected int randomLimit = 9;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -19,20 +23,32 @@ public class JunkSpawnRandom : BaseMonoBehaviour
         junkSpawnCtrl = GetComponent<JunkSpawnerCtrl>();
         Debug.Log(transform.name + " :Load JunkCtrl", gameObject);
     }
-
-    protected override void Start()
+    protected virtual void FixedUpdate()
     {
         JunkSpawning();
     }
 
     protected virtual void JunkSpawning()
     {
+        if (RandomLimit()) return;
+
+        randomTimer += Time.fixedDeltaTime;
+        if (randomDelay > randomLimit) return;
+        randomTimer = 0;
+
         Transform posSpawn = JunkSpawnCtrl.JunkSpawnPoints.GetRandomPoint();
         Vector3 pos = posSpawn.position;
         Quaternion rot = posSpawn.rotation;
-        Transform obj = JunkSpawnCtrl.JunkSpawner.Spawn(JunkSpawner.meteoriteOne, pos, rot);
-        obj.gameObject.SetActive(true);
 
-        Invoke(nameof(JunkSpawning), 1.5f);
+        Transform prefab = JunkSpawner.Instance.RandomPrefab();
+        Transform obj = JunkSpawnCtrl.JunkSpawner.Spawn(prefab.name, pos, rot);
+
+        obj.gameObject.SetActive(true);
+    }
+
+    protected virtual bool RandomLimit()
+    {
+        int junkCurCount = junkSpawnCtrl.JunkSpawner.SpawnedCount;
+        return junkCurCount >= randomLimit;
     }
 }

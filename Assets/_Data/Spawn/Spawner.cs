@@ -1,13 +1,18 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Spawner : BaseMonoBehaviour
 {
+    [Header("Spawner")]
     [SerializeField] protected Transform holder;
+
+    [SerializeField] protected int spawnedCount;
+    public int SpawnedCount  { get => spawnedCount; }
+
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected List<Transform> poolObjs;
+
 
     protected override void LoadComponents()
     {
@@ -53,8 +58,14 @@ public abstract class Spawner : BaseMonoBehaviour
         newPrefab.SetLocalPositionAndRotation(posSpawn, rotation);
 
         newPrefab.parent = holder;
+        spawnedCount++;
         return newPrefab;
     }
+
+    //public virtual Transform Spawn(Transform prefab, Vector3 posSpawn, Quaternion rotation)
+    //{
+
+    //}
 
     protected virtual Transform GetPrefabFromPool( Transform prefab )
     {
@@ -76,6 +87,7 @@ public abstract class Spawner : BaseMonoBehaviour
     {
         poolObjs.Add(obj);
         obj.gameObject.SetActive(false);
+        spawnedCount--;
     }
 
     public virtual Transform GetPrefabByName(string prefabName)
@@ -85,5 +97,11 @@ public abstract class Spawner : BaseMonoBehaviour
             if(prefab.name == prefabName) return prefab;
         }
         return null;
+    }
+
+    public virtual Transform RandomPrefab()
+    {
+        int rand = Random.Range(0, prefabs.Count);
+        return prefabs[rand];
     }
 }

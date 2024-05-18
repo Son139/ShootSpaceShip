@@ -6,8 +6,8 @@ using UnityEngine;
 public class DamageReceiver : BaseMonoBehaviour
 {
     [SerializeField] protected SphereCollider sphereCollider;
-    [SerializeField] protected int hpObj = 1;
-    [SerializeField] protected int hpObjMax = 10;
+    [SerializeField] protected int hpObj;
+    [SerializeField] protected int hpObjMax;
     [SerializeField] protected bool isDead = false;
 
     protected override void LoadComponents()

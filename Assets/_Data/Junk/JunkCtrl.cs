@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class JunkCtrl : BaseMonoBehaviour
 {
+    [Header("JunkCtrl")]
     [SerializeField] protected Transform model;
     public Transform Model { get => model; }
 
     [SerializeField] protected JunkDespawn junkDespawn;
     public JunkDespawn JunkDespawn { get => junkDespawn; }
 
+    [SerializeField] protected JunkSO junkSO;
+    public JunkSO JunkSO { get => junkSO; }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
         LoadModel();
         LoadJunkDespawn();
+        LoadJunkSO();
     }
 
     protected virtual void LoadModel()
@@ -26,8 +31,16 @@ public class JunkCtrl : BaseMonoBehaviour
 
     protected virtual void LoadJunkDespawn()
     {
-        if(junkDespawn != null) return;
+        if (junkDespawn != null) return;
         junkDespawn = transform.GetComponentInChildren<JunkDespawn>();
         Debug.Log(transform.name + ": Load JunkDespawn", gameObject);
+    }
+
+    protected virtual void LoadJunkSO()
+    {
+        if (junkSO != null) return;
+        string resPath = "Junk/" + transform.name;
+        junkSO = Resources.Load<JunkSO>(resPath);
+        Debug.LogWarning(transform.name + " : Load JunkSO", gameObject);
     }
 }
